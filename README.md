@@ -1,8 +1,8 @@
 # Animal-Score-Logic
-"A Python project that uses Image Classification to identify animal actions (like playing or sitting etc.) and calculates a 'Fun Score' using a custom-weighted logic."
+"A Python project that uses Image Classification to identify animal actions (like playing or sitting etc.) and calculates a 'Fun Score' using a custom-weighted logic and the pre-trained AI tool : MobileNetV2."
 
 ## Project Description
-This project is a Python tool that calculates a "Playfulness Score" for animals based on their actions and mood. It is designed to work as the logic layer for an AI-powered camera system.
+This project is a Python tool that calculates a "Playfulness Score" for animals based on their actions and mood. I designed it to work as the logic layer for an AI-powered camera system. I have used the MoblieNetV2 tool.
 
 ## Features Implemented
 - **Size Scaling:** Differentiates between big and small animals for score weighting.
@@ -17,7 +17,7 @@ This project is a Python tool that calculates a "Playfulness Score" for animals 
 4. **Display:** In `main.py`, the animals are ranked and displayed in a neat table with emojis.
 
 ## The Logic engine
-The project uses a **Heuristic Scoring Model**. 
+I used a **Heuristic Scoring Model**. 
 - **Base Score:** Derived from the posture (e.g., Playful = 50 pts).
 - **Multipliers:** Small animals receive a +20 point bonus.
 - **Social Bonus:** Interactions between animals add +30 points to the total.
