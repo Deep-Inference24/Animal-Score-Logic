@@ -1,50 +1,44 @@
-import json
+def get_ai_prediction():
+    """
+    Simulates the output of an AI model, MobileNetV2.
+    """
+    # these come from the model that I have used(MobileNetV2)
+    detected_animal = "Dog"
+    detected_posture = "Play-bow" 
+    return detected_animal, detected_posture
 
-def calculate_playfulness(posture, mood, size):
-    """Calculates a numerical score based on 7 distinct behavioral postures."""
-    # Base score
-    score = 40
+def calculate_fun_score(posture, mood):
+    """
+    Calculates the score and assigns a mood-based emoji.
+    """
+    base_score = 40
     
-    # 1. Postures
-    # Each posture has a unique weightage depends on energy levels
-    if posture == "jumping":
-        score += 45
-    elif posture == "running":
-        score += 40
-    elif posture == "play-bow": 
-        score += 35
-    elif posture == "standing-alert":
-        score += 20
-    elif posture == "sitting":
-        score += 10
-    elif posture == "stretching":
-        score += 5
-    elif posture == "sleeping":
-        score -= 25
-        
-    # 2. Mood Multiplier
+    # Postures logic
+    posture_weights = {
+        "jumping": 45, "running": 40, "play-bow": 35,
+        "standing-alert": 20, "sitting": 10, "stretching": 5, "sleeping": -25
+    }
+    
+    score_after_posture = base_score + posture_weights.get(posture.lower(), 0)
+    
+    # Mood multiplier
     multiplier = 1.0
-    if mood == "happy":
-        multiplier = 1.5
-    elif mood == "curious":
-        multiplier = 1.3
-    elif mood == "alert":
-        multiplier = 1.1
-    elif mood == "sleepy":
-        multiplier = 0.7
+    if mood == "happy": multiplier = 1.5
+    elif mood == "curious": multiplier = 1.3
+    elif mood == "sleepy": multiplier = 0.7
         
-    final_score = score * multiplier
-    
-    # Ensuring that the score stays between 0 and 100
-    if final_score > 100: final_score = 100
-    if final_score < 0: final_score = 0
-        
-    return round(final_score, 2)
+    final_score = round(max(0, min(score_after_posture * multiplier, 100)), 2)
 
-def generate_emoji(score, posture):
-    """Suggests an emoji based on score and specific posture."""
-    if posture == "sleeping": return "💤"
-    if score >= 85: return "🚀"
-    if score >= 60: return "🎾"
-    if score >= 40: return "👀"
-    return "🐾"
+    # Emoji Selection Logic
+    if posture.lower() == "sleeping":
+        emoji = "😴"
+    elif final_score >= 85:
+        emoji = "🚀"
+    elif final_score >= 60:
+        emoji = "🎾"
+    elif final_score >= 40:
+        emoji = "🐾"
+    else:
+        emoji = "☁️"
+        
+    return final_score, emoji
