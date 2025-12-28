@@ -17,7 +17,7 @@ def get_mobilenet_prediction(animal_id):
 
 # THE DATA (Only Names and Moods)
 animals = [
-    {"name": "Buddy", "mood": "happy"},
+    {"name": "Buddy", "mood": "sleepy"},
     {"name": "Charlie", "mood": "happy"},
     {"name": "Max", "mood": "alert"},
     {"name": "Luna", "mood": "curious"},
