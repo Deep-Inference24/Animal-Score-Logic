@@ -30,6 +30,7 @@ I used a **Modular Design**. `engine.py` handles the "math and rules," while `ma
 2. Run `python animal_score_logic.py`.
 
 ### Sample Output:
+'''text
 --- Animal Analytics: Playfulness Leaderboard ---
 
 Rank  | Name     | Score  | Status
@@ -39,3 +40,4 @@ Rank  | Name     | Score  | Status
 3     | Max      | 66.0   | 🎾 (standing-alert)
 4     | Luna     | 58.5   | 🐾 (stretching)
 5     | Milo     | 10.5   | 😴 (sleeping)
+'''
