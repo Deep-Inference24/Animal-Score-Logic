@@ -35,7 +35,7 @@ I used a **Modular Design**. `engine.py` handles the "math and rules," while `ma
 
 Rank  | Name     | Score  | Status
 -----------------------------------
-1     | Buddy    | 100.0  | 🚀 (sleeping)
+1     | Buddy    | 100.0  | 🚀 (jumping)
 2     | Charlie  | 100.0  | 🚀 (play-bow)
 3     | Max      | 66.0   | 🎾 (standing-alert)
 4     | Luna     | 58.5   | 🐾 (stretching)
