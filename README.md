@@ -38,9 +38,9 @@ Rank  | Name     | Score  | Status
 2     | Charlie  | 100.0  | 🚀 (play-bow)
 3     | Max      | 66.0   | 🎾 (standing-alert)
 4     | Luna     | 58.5   | 🐾 (stretching)
-5     | Milo     | 10.5   | 😴 (sleeping)
-'''
-### Sample Output:
+5     | Milo     | 10.5   | 😴 (sleeping)'''
+
+'''### Sample Output:
 ```text
 --- Animal Analytics: Playfulness Leaderboard ---
 
@@ -51,3 +51,14 @@ Rank  | Name     | Score  | Status
 3     | Max      | 66.0   | 🎾 (standing-alert)
 4     | Luna     | 58.5   | 🐾 (stretching)
 5     | Milo     | 10.5   | 😴 (sleeping)
+'''
+```markdown
+### Sample Output:
+
+| Rank | Name | Score | Status |
+| :--- | :--- | :--- | :--- |
+| 1 | Buddy | 100.0 | 🚀 (jumping) |
+| 2 | Charlie | 100.0 | 🚀 (play-bow) |
+| 3 | Max | 66.0 | 🎾 (standing-alert) |
+| 4 | Luna | 58.5 | 🐾 (stretching) |
+| 5 | Milo | 10.5 | 😴 (sleeping) |
