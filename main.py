@@ -1,34 +1,49 @@
-from animal_score_logic import calculate_fun_score, get_ai_prediction
+# main.py
+from engine import calculate_fun_score
+import time
 
-def start_project():
-    print("Animal playfulness score (powered by MobileNetV2)")
+# SIMULATING MOBILENETV2 CONNECTION
+def get_mobilenet_prediction(animal_id):
     
-    # Simulating a batch of different animals
-    test_data = [
-        {"name": "Buddy", "mood": "happy", "manual_posture": "jumping"},
-        {"name": "Luna", "mood": "curious", "manual_posture": "stretching"},
-        {"name": "Charlie", "mood": "happy", "manual_posture": "play-bow"},
-        {"name": "Milo", "mood": "sleepy", "manual_posture": "sleeping"}
-    ]
+    # Here, I have made a 'Mock' output representing what the AI sees
+    ai_vision_db = {
+        "Buddy": "jumping",
+        "Charlie": "play-bow",
+        "Max": "standing-alert",
+        "Luna": "stretching",
+        "Milo": "sleeping"
+    }
+    return ai_vision_db.get(animal_id, "sitting")
+
+# THE DATA (Only Names and Moods)
+animals = [
+    {"name": "Buddy", "mood": "happy"},
+    {"name": "Charlie", "mood": "happy"},
+    {"name": "Max", "mood": "alert"},
+    {"name": "Luna", "mood": "curious"},
+    {"name": "Milo", "mood": "sleepy"}
+]
+
+print("--- Initializing MobileNetV2 Inference Stream ---")
+time.sleep(1) # Simulates the AI 'loading'
+
+results = []
+for a in animals:
     
-    results_list = []
-
-    for item in test_data:
-        # Calculate score using the 'animal_score_logic' file's logic
-        score = calculate_fun_score(item['manual_posture'], item['mood'])
-        
-        results_list.append({
-            "name": item['name'],
-            "score": score,
-            "posture": item['manual_posture']
-        })
-
-    # Create a Leaderboard (Requires: Ranking)
-    results_list.sort(key=lambda x: x['score'], reverse=True)
+    detected_posture = get_mobilenet_prediction(a['name'])
     
-    print("\n--- Playfulness Leaderboard ---")
-    for rank, p in enumerate(results_list, 1):
-        print(f"Rank {rank}: {p['name']} ({p['posture']}) -> Score: {p['score']}/100")
+    score, emoji = calculate_fun_score(detected_posture, a['mood'])
+    
+    results.append({
+        "name": a['name'], 
+        "score": score, 
+        "emoji": emoji, 
+        "posture": detected_posture
+    })
 
-if __name__ == "__main__":
-    start_project()
+# Sort and Print
+results.sort(key=lambda x: x['score'], reverse=True)
+print(f"{'Rank':<5} | {'Name':<8} | {'Score':<6} | {'Status (AI Detected)'}")
+print("-" * 50)
+for rank, p in enumerate(results, 1):
+    print(f"{rank:<5} | {p['name']:<8} | {p['score']:<6} | {p['emoji']} ({p['posture']})")
